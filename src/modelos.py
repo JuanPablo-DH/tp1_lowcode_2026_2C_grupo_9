@@ -1,100 +1,100 @@
 # La clase Producto se enfoca en estructurar la informacion de cada Producto
 class Producto:
-    __id_producto: int
-    __nombre: str
-    __categoria: str
-    __stock_actual: int
-    __stock_minimo: int
-    __precio_costo: float
-    __precio_venta: float
-    __proveedor: str
+    def __init__(
+        self,
+        id_producto: int,
+        nombre: str,
+        categoria: str,
+        stock_actual: int,
+        stock_minimo: int,
+        precio_costo: float,
+        precio_venta: float,
+        proveedor: str
+    ):
+        self.id_producto = id_producto
+        self.nombre = nombre
+        self.categoria = categoria
+        self.stock_actual = stock_actual
+        self.stock_minimo = stock_minimo
+        self.precio_costo = precio_costo
+        self.precio_venta = precio_venta
+        self.proveedor = proveedor
 
     #region Getters y Setters
 
     @property
-    def __id_producto(self):
-        return self.__id_producto
-    
-    @property
-    def __nombre(self):
-        return self.__nombre
-    
-    @property
-    def __categoria(self):
-        return self.__categoria
+    def id_producto(self) -> int:
+        return self._id_producto
+
+    @id_producto.setter
+    def id_producto(self, valor: int):
+        self._id_producto = valor
 
     @property
-    def __stock_actual(self):
-        return self.__stock_actual
+    def nombre(self) -> str:
+        return self._nombre
+
+    @nombre.setter
+    def nombre(self, valor: str):
+        self._nombre = valor
 
     @property
-    def __stock_minimo(self):
-        return self.__stock_minimo
+    def categoria(self) -> str:
+        return self._categoria
+
+    @categoria.setter
+    def categoria(self, valor: str):
+        self._categoria = valor
 
     @property
-    def __precio_costo(self):
-        return self.__precio_costo
+    def stock_actual(self) -> int:
+        return self._stock_actual
+
+    @stock_actual.setter
+    def stock_actual(self, valor: int):
+        if valor < 0:
+            raise ValueError("El stock actual no puede ser negativo.")
+        self._stock_actual = valor
 
     @property
-    def __precio_venta(self):
-        return self.__precio_venta
+    def stock_minimo(self) -> int:
+        return self._stock_minimo
+
+    @stock_minimo.setter
+    def stock_minimo(self, valor: int):
+        if valor < 0:
+            raise ValueError("El stock mínimo no puede ser negativo.")
+        self._stock_minimo = valor
 
     @property
-    def __proveedor(self):
-        return self.__proveedor
+    def precio_costo(self) -> float:
+        return self._precio_costo
 
-    @__id_producto.setter
-    def __id_producto(self, id_producto):
-        self.__id_producto = id_producto
+    @precio_costo.setter
+    def precio_costo(self, valor: float):
+        if valor < 0:
+            raise ValueError("El precio de costo no puede ser negativo.")
+        self._precio_costo = valor
 
-    @__nombre.setter
-    def __nombre(self, id_producto):
-        self.__nombre = id_producto
+    @property
+    def precio_venta(self) -> float:
+        return self._precio_venta
 
-    @__categoria.setter
-    def __categoria(self, id_producto):
-        self.__categoria = id_producto
+    @precio_venta.setter
+    def precio_venta(self, valor: float):
+        if valor < 0:
+            raise ValueError("El precio de venta no puede ser negativo.")
+        self._precio_venta = valor
 
-    @__stock_actual.setter
-    def __stock_actual(self, id_producto):
-        self.__stock_actual = id_producto
+    @property
+    def proveedor(self) -> str:
+        return self._proveedor
 
-    @__stock_minimo.setter
-    def __stock_minimo(self, id_producto):
-        self.__stock_minimo = id_producto
-
-    @__precio_costo.setter
-    def __precio_costo(self, id_producto):
-        self.__precio_costo = id_producto
-
-    @__precio_venta.setter
-    def __precio_venta(self, id_producto):
-        self.__precio_venta = id_producto
-
-    @__proveedor.setter
-    def __proveedor(self, id_producto):
-        self.__proveedor = id_producto
+    @proveedor.setter
+    def proveedor(self, valor: str):
+        self._proveedor = valor
 
     #endregion Getters y Setters
-
-    def __init__(
-        self,
-        id_producto,
-        nombre,
-        categoria,
-        stock_actual,
-        stock_minimo,
-        precio_costo,
-        precio_venta,
-        proveedor):
-        self.__id_producto = id_producto
-        self.__nombre = nombre
-        self.__categoria = categoria
-        self.__stock_actual = stock_actual
-        self.__stock_minimo = stock_minimo
-        self.__precio_costo = precio_costo
-        self.__precio_venta = precio_venta
-        self.__proveedor = proveedor
 
     def calcular_capital_total() -> float:
         pass # Stock actual * Precio costo
@@ -110,12 +110,20 @@ class Producto:
 
 # La clase Inventario se enfoca en gestionar los Productos
 class Inventario:
-    __lista_productos: list[Producto]
+    def __init__(self, lista_productos: list[Producto]):
+        self.lista_productos = lista_productos
 
-    # Agregar getter y setter
+    #region Getters y Setters
 
-    def __init__(self):
-        pass
+    @property
+    def lista_productos(self) -> list[Producto]:
+        return self._lista_productos
+
+    @lista_productos.setter
+    def lista_productos(self, valor: list[Producto]):
+        self._lista_productos = valor
+
+    #endregion Getters y Setters
 
     #region CRUD
 
@@ -170,7 +178,19 @@ class Inventario:
 # La clase Informe se enfoca en mostrar el reporte de estado del Inventario
 class Informe:
     def __init__(self, inventario: Inventario):
-        pass
+        self.inventario = inventario
+
+    #region Getters y Setters
+    
+    @property
+    def inventario(self) -> Inventario:
+        return self._inventario
+
+    @inventario.setter
+    def inventario(self, valor: Inventario):
+        self._inventario = valor
+
+    #endregion Getters y Setters
 
     def generar_reporte_general() -> str:
         pass # Prepara la tabla completa formateada para la consola
