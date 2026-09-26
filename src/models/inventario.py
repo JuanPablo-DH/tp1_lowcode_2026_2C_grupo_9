@@ -5,8 +5,8 @@ from src.services.archivador import Archivador
 
 class Inventario:
     def __init__(self, lista_productos: list[Producto], lista_transacciones: list[Transaccion] = None):
-        self._lista_productos = lista_productos
-        self._lista_transacciones = lista_transacciones if lista_transacciones is not None else []
+        self.lista_productos = lista_productos
+        self.lista_transacciones = lista_transacciones if lista_transacciones is not None else []
 
     # ==========================================
     # Getters y setters
