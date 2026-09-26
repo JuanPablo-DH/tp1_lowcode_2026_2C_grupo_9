@@ -1,0 +1,102 @@
+[
+    {
+        "id_transaccion": 1,
+        "tipo": "ACTUALIZACION",
+        "id_producto": 101,
+        "nombre_producto": "Procesador AMD Ryzen 7 7800X3D",
+        "cantidad": 5,
+        "monto_total": 2900000.0,
+        "detalle": "Alta inicial de catálogo",
+        "fecha": "2026-09-18 09:15:00"
+    },
+    {
+        "id_transaccion": 2,
+        "tipo": "ACTUALIZACION",
+        "id_producto": 103,
+        "nombre_producto": "Placa de Video RTX 4070 Super 12GB",
+        "cantidad": 4,
+        "monto_total": 3960000.0,
+        "detalle": "Alta inicial de catálogo",
+        "fecha": "2026-09-18 10:00:00"
+    },
+    {
+        "id_transaccion": 3,
+        "tipo": "VENTA",
+        "id_producto": 101,
+        "nombre_producto": "Procesador AMD Ryzen 7 7800X3D",
+        "cantidad": 1,
+        "monto_total": 580000.0,
+        "detalle": "Venta realizada al cliente #1042",
+        "fecha": "2026-09-19 11:30:22"
+    },
+    {
+        "id_transaccion": 4,
+        "tipo": "VENTA",
+        "id_producto": 103,
+        "nombre_producto": "Placa de Video RTX 4070 Super 12GB",
+        "cantidad": 1,
+        "monto_total": 990000.0,
+        "detalle": "Venta realizada al cliente #1045",
+        "fecha": "2026-09-20 15:45:10"
+    },
+    {
+        "id_transaccion": 5,
+        "tipo": "VENTA",
+        "id_producto": 105,
+        "nombre_producto": "Disco SSD M.2 NVMe 2TB Gen4",
+        "cantidad": 3,
+        "monto_total": 594000.0,
+        "detalle": "Venta realizada al cliente #1050",
+        "fecha": "2026-09-21 17:10:05"
+    },
+    {
+        "id_transaccion": 6,
+        "tipo": "REPOSICION",
+        "id_producto": 106,
+        "nombre_producto": "Memoria RAM 32GB (2x16GB) DDR5 6000MHz",
+        "cantidad": 10,
+        "monto_total": 1250000.0,
+        "detalle": "Ingreso de stock orden de compra #881",
+        "fecha": "2026-09-22 09:00:00"
+    },
+    {
+        "id_transaccion": 7,
+        "tipo": "VENTA",
+        "id_producto": 110,
+        "nombre_producto": "Monitor Gaming 27 IPS 180Hz QHD",
+        "cantidad": 2,
+        "monto_total": 820000.0,
+        "detalle": "Venta realizada al cliente #1062",
+        "fecha": "2026-09-23 14:20:00"
+    },
+    {
+        "id_transaccion": 8,
+        "tipo": "VENTA",
+        "id_producto": 111,
+        "nombre_producto": "Teclado Mecánico Custom 75% Switch Red",
+        "cantidad": 2,
+        "monto_total": 152000.0,
+        "detalle": "Venta realizada al cliente #1071",
+        "fecha": "2026-09-24 16:05:40"
+    },
+    {
+        "id_transaccion": 9,
+        "tipo": "REPOSICION",
+        "id_producto": 107,
+        "nombre_producto": "Fuente 850W 80 Plus Gold Modular",
+        "cantidad": 2,
+        "monto_total": 260000.0,
+        "detalle": "Ingreso parcial orden #890",
+        "fecha": "2026-09-25 10:15:30"
+    },
+    {
+        "id_transaccion": 10,
+        "tipo": "VENTA",
+        "id_producto": 106,
+        "nombre_producto": "Memoria RAM 32GB (2x16GB) DDR5 6000MHz",
+        "cantidad": 2,
+        "monto_total": 360000.0,
+        "detalle": "Venta realizada al cliente #1080",
+        "fecha": "2026-09-26 09:40:00"
+    }
+]

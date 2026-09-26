@@ -1,0 +1,122 @@
+[
+    {
+        "id_producto": 101,
+        "nombre": "Procesador AMD Ryzen 7 7800X3D",
+        "categoria": "Procesadores",
+        "stock_actual": 4,
+        "stock_minimo": 5,
+        "precio_costo": 420000.0,
+        "precio_venta": 580000.0,
+        "proveedor": "AMD"
+    },
+    {
+        "id_producto": 102,
+        "nombre": "Procesador Intel Core i5 13400F",
+        "categoria": "Procesadores",
+        "stock_actual": 12,
+        "stock_minimo": 6,
+        "precio_costo": 210000.0,
+        "precio_venta": 295000.0,
+        "proveedor": "Intel"
+    },
+    {
+        "id_producto": 103,
+        "nombre": "Placa de Video RTX 4070 Super 12GB",
+        "categoria": "Placas de Video",
+        "stock_actual": 3,
+        "stock_minimo": 4,
+        "precio_costo": 750000.0,
+        "precio_venta": 990000.0,
+        "proveedor": "ASUS"
+    },
+    {
+        "id_producto": 104,
+        "nombre": "Placa de Video RX 7600 8GB OC",
+        "categoria": "Placas de Video",
+        "stock_actual": 7,
+        "stock_minimo": 3,
+        "precio_costo": 310000.0,
+        "precio_venta": 420000.0,
+        "proveedor": "Sapphire"
+    },
+    {
+        "id_producto": 105,
+        "nombre": "Disco SSD M.2 NVMe 2TB Gen4",
+        "categoria": "Almacenamiento",
+        "stock_actual": 15,
+        "stock_minimo": 8,
+        "precio_costo": 140000.0,
+        "precio_venta": 198000.0,
+        "proveedor": "Western Digital"
+    },
+    {
+        "id_producto": 106,
+        "nombre": "Memoria RAM 32GB (2x16GB) DDR5 6000MHz",
+        "categoria": "Componentes",
+        "stock_actual": 18,
+        "stock_minimo": 10,
+        "precio_costo": 125000.0,
+        "precio_venta": 180000.0,
+        "proveedor": "Corsair"
+    },
+    {
+        "id_producto": 107,
+        "nombre": "Fuente 850W 80 Plus Gold Modular",
+        "categoria": "Fuentes y Gabinetes",
+        "stock_actual": 2,
+        "stock_minimo": 5,
+        "precio_costo": 130000.0,
+        "precio_venta": 190000.0,
+        "proveedor": "EVGA"
+    },
+    {
+        "id_producto": 108,
+        "nombre": "Gabinete ATX Mid Tower Mesh ARGB",
+        "categoria": "Fuentes y Gabinetes",
+        "stock_actual": 9,
+        "stock_minimo": 4,
+        "precio_costo": 75000.0,
+        "precio_venta": 115000.0,
+        "proveedor": "Thermaltake"
+    },
+    {
+        "id_producto": 109,
+        "nombre": "Refrigeración Líquida Water Cooler 240mm",
+        "categoria": "Refrigeración",
+        "stock_actual": 6,
+        "stock_minimo": 5,
+        "precio_costo": 95000.0,
+        "precio_venta": 142000.0,
+        "proveedor": "Cooler Master"
+    },
+    {
+        "id_producto": 110,
+        "nombre": "Monitor Gaming 27 IPS 180Hz QHD",
+        "categoria": "Monitores",
+        "stock_actual": 5,
+        "stock_minimo": 3,
+        "precio_costo": 290000.0,
+        "precio_venta": 410000.0,
+        "proveedor": "LG"
+    },
+    {
+        "id_producto": 111,
+        "nombre": "Teclado Mecánico Custom 75% Switch Red",
+        "categoria": "Periféricos",
+        "stock_actual": 14,
+        "stock_minimo": 6,
+        "precio_costo": 48000.0,
+        "precio_venta": 76000.0,
+        "proveedor": "Redragon"
+    },
+    {
+        "id_producto": 112,
+        "nombre": "Auriculares Gaming 7.1 Wireless",
+        "categoria": "Periféricos",
+        "stock_actual": 8,
+        "stock_minimo": 5,
+        "precio_costo": 82000.0,
+        "precio_venta": 128000.0,
+        "proveedor": "HyperX"
+    }
+]
