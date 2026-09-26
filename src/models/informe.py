@@ -159,7 +159,7 @@ class Informe:
         for t in txs:
             reporte += (
                 f"{t.id_transaccion:<{w_id}} | {t.tipo:<{w_tip}} | {t.fecha:<{w_fec}} | {t.nombre_producto[:22]:<{w_pro}} | "
-                f"{t.cantidad:<{w_can}} | AR$ {t.monto_total:>{w_mon}.2f} | {t.detalle[:15]:<{w_det}}\n"
+                f"{t.cantidad:<{w_can}} | AR$ {t.monto_total:>{w_mon},.2f} | {t.detalle[:15]:<{w_det}}\n"
             )
         
         return reporte
@@ -253,19 +253,36 @@ class Informe:
         total_costo_usd = total_costo_ars / precio_venta_usd
         ganancia_potencial_usd = ganancia_potencial_ars / precio_venta_usd
 
-        reporte = (
-            "========================================================================================\n"
-            f"                     VALUACIÓN DE INVENTARIO EN DÓLARES ({nombre_dolar.upper()})        \n"
-            "========================================================================================\n"
-            f"💵 Cotización dólar venta : AR$ {precio_venta_usd:,.2f}\n"
-            f"💵 Cotización dólar compra: AR$ {precio_compra_usd:,.2f}\n"
-            f"🕒 Última actualización   : {fecha_act[:19].replace('T', ' ')}\n"
-            + "-" * 88 + "\n"
-            f"📦 Valuación total venta  : AR$ {total_valor_venta_ars:,.2f}  |  U$D {total_valor_venta_usd:,.2f}\n"
-            f"📦 Costo total de inversión: AR$ {total_costo_ars:,.2f}  |  U$D {total_costo_usd:,.2f}\n"
-            + "-" * 88 + "\n"
-            f"📈 Margen potencial de ganancia : AR$ {ganancia_potencial_ars:,.2f}  |  U$D {ganancia_potencial_usd:,.2f} ({margen_porcentaje:.1f}%)\n"
-            "========================================================================================\n"
-        )
+        # Formatear la fecha para la visualización
+        fecha_fmt = fecha_act[:19].replace("T", " ")
+
+        # Anchos fijos para la sección de cotización (líneas simples)
+        w_lbl_top = 36
+        w_val_top = 47
+
+        # Anchos fijos para las secciones de doble moneda (AR$ | U$D)
+        w_lbl = 34
+        w_ars = 22
+        w_usd = 22
+
+        reporte = "========================================================================================\n"
+        reporte += f"                     VALUACIÓN DE INVENTARIO EN DÓLARES ({nombre_dolar.upper()})        \n"
+        reporte += "========================================================================================\n"
+
+        # Sección Superior: Cotización y Fecha
+        reporte += f" 💵 {'Cotización dólar venta:':<{w_lbl_top}} {f'AR$ {precio_venta_usd:,.2f}':>{w_val_top}}\n"
+        reporte += f" 💵 {'Cotización dólar compra:':<{w_lbl_top}} {f'AR$ {precio_compra_usd:,.2f}':>{w_val_top}}\n"
+        reporte += f" 🕒 {'Última actualización API:':<{w_lbl_top}} {f'{fecha_fmt}':>{w_val_top}}\n"
+        reporte += "-" * 88 + "\n"
+
+        # Sección Principal: Valuación y Costos
+        reporte += f" 📦 {'Valuación total venta:':<{w_lbl}} {f'AR$ {total_valor_venta_ars:,.2f}':>{w_ars}}  |  {f'U$D {total_valor_venta_usd:,.2f}':>{w_usd}}\n"
+        reporte += f" 📦 {'Costo total de inversión:':<{w_lbl}} {f'AR$ {total_costo_ars:,.2f}':>{w_ars}}  |  {f'U$D {total_costo_usd:,.2f}':>{w_usd}}\n"
+        reporte += "-" * 88 + "\n"
+
+        # Sección Final: Margen de Ganancia
+        margen_usd_str = f"U$D {ganancia_potencial_usd:,.2f} ({margen_porcentaje:.1f}%)"
+        reporte += f" 📈 {'Margen potencial de ganancia:':<{w_lbl}} {f'AR$ {ganancia_potencial_ars:,.2f}':>{w_ars}}  |  {margen_usd_str:>{w_usd}}\n"
+        reporte += "========================================================================================\n"
 
         return reporte
