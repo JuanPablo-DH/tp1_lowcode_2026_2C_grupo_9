@@ -51,7 +51,7 @@
     },
     {
         "id_transaccion": 6,
-        "tipo": "REPOSICION",
+        "tipo": "REABASTECER",
         "id_producto": 106,
         "nombre_producto": "Memoria RAM 32GB (2x16GB) DDR5 6000MHz",
         "cantidad": 10,
@@ -81,7 +81,7 @@
     },
     {
         "id_transaccion": 9,
-        "tipo": "REPOSICION",
+        "tipo": "REABASTECER",
         "id_producto": 107,
         "nombre_producto": "Fuente 850W 80 Plus Gold Modular",
         "cantidad": 2,

@@ -148,12 +148,40 @@ class Inventario:
         prod.stock_actual += cantidad 
 
         return self._registrar_transaccion(
-            tipo="REPOSICION",
+            tipo="REABASTECER",
             producto=prod,
             cantidad=cantidad,
             monto_total=cantidad * prod.precio_costo,
             detalle=f"Ingreso de stock (+{cantidad} u.)"
         )
+
+    def desabastecer_producto(self, id_producto: int, cantidad: int) -> Transaccion:
+        """
+        Resta unidades al stock de un producto (retiro, merma o ajuste) y registra la transacción.
+        Lanza ValueError si el producto no existe o si la cantidad supera el stock disponible.
+        """
+        prod = self.obtener_producto(id_producto)
+        if prod is None:
+            raise ValueError(f"No existe el producto con ID {id_producto}.")
+
+        if cantidad <= 0:
+            raise ValueError("La cantidad a descontar debe ser mayor a 0.")
+
+        if cantidad > prod.stock_actual:
+            raise ValueError(
+                f"Stock insuficiente. Stock disponible: {prod.stock_actual} u., intentó retirar: {cantidad} u."
+            )
+
+        prod.stock_actual -= cantidad
+
+        return self._registrar_transaccion(
+            tipo="DESABASTECER",
+            producto=prod,
+            cantidad=cantidad,
+            monto_total=cantidad * prod.precio_costo,
+            detalle=f"Retiro de stock (-{cantidad} u.)"
+        )
+
 
     # ==========================================
     # Búsquedas y Filtros

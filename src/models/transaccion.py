@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Transaccion:
-    TIPOS_PERMITIDOS = ["VENTA", "REPOSICION", "ACTUALIZACION"]
+    TIPOS_PERMITIDOS = ["VENTA", "REABASTECER", "DESABASTECER", "ACTUALIZACION"]
     FORMATO_FECHA = "%Y-%m-%d %H:%M:%S"
 
     def __init__(

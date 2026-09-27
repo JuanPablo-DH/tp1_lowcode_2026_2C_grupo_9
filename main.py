@@ -67,6 +67,7 @@ def mostrar_menu():
     print("    1.4 Eliminar producto")
     print("    1.5 Buscar productos (por categoría o proveedor)")
     print("    1.6 Reabastecer producto")
+    print("    1.7 Desabastecer producto")
     print(" 2. Alertas")
     print("    2.1 Ver alertas de stock crítico")
     print("    2.2 Ver costo de reposición")
@@ -126,71 +127,95 @@ def main():
         # --- OPCIÓN 1.2: Registrar nuevo producto ---
         elif opcion == "1.2":
             print("\n--- ➕ REGISTRAR NUEVO PRODUCTO ---")
+            nuevo_prod = Producto()
+
+            # 1. Bucle exclusivo para validar e ingresar un ID existente
             while True:
-                nuevo_prod = Producto()
                 pedir_y_asignar(nuevo_prod, "id_producto", "ID del producto", int)
 
                 if inventario.obtener_producto(nuevo_prod.id_producto) is not None:
                     print(f"❌ Ya existe un producto registrado con el ID {nuevo_prod.id_producto}.")
                     continue
 
-                pedir_y_asignar(nuevo_prod, "nombre", "Nombre del producto", str)
-                pedir_y_asignar(nuevo_prod, "categoria", "Categoría", str)
-                pedir_y_asignar(nuevo_prod, "stock_actual", "Stock actual", int)
-                pedir_y_asignar(nuevo_prod, "stock_minimo", "Stock mínimo", int)
-                pedir_y_asignar(nuevo_prod, "precio_costo", "Precio de costo (AR$)", float, es_moneda=True)
-                pedir_y_asignar(nuevo_prod, "precio_venta", "Precio de venta (AR$)", float, es_moneda=True)
-                pedir_y_asignar(nuevo_prod, "proveedor", "Proveedor", str)
+                break # ID correcto
 
+            # 2. Implementación de la función "pedir_y_asignar" para solicitar los datos del producto (para reutilizar sus setters)
+            pedir_y_asignar(nuevo_prod, "nombre", "Nombre del producto", str)
+            pedir_y_asignar(nuevo_prod, "categoria", "Categoría", str)
+            pedir_y_asignar(nuevo_prod, "stock_actual", "Stock actual", int)
+            pedir_y_asignar(nuevo_prod, "stock_minimo", "Stock mínimo", int)
+            pedir_y_asignar(nuevo_prod, "precio_costo", "Precio de costo (AR$)", float, es_moneda=True)
+            pedir_y_asignar(nuevo_prod, "precio_venta", "Precio de venta (AR$)", float, es_moneda=True)
+            pedir_y_asignar(nuevo_prod, "proveedor", "Proveedor", str)
+
+            # 3. Ejecución de la lógica de negocio
+            try:
                 inventario.agregar_producto(nuevo_prod)
                 print(f"\n✅ Producto '{nuevo_prod.nombre}' registrado exitosamente.")
-                break
+            except ValueError as e:
+                print(f"❌ {e}")
+            break
 
         # --- OPCIÓN 1.3: Modificar producto ---
         elif opcion == "1.3":
             print("\n--- ✏️ MODIFICAR PRODUCTO ---")
+            aux = Producto()
+
+            # 1. Bucle exclusivo para validar e ingresar un ID existente
             while True:
-                aux = Producto()
                 pedir_y_asignar(aux, "id_producto", "Ingrese el ID del producto a modificar", int)
 
                 prod_actual = inventario.obtener_producto(aux.id_producto)
+
                 if prod_actual is None:
                     print(f"❌ No existe un producto con el ID {aux.id_producto}.")
                     continue
 
-                print(f"\nProducto seleccionado: {prod_actual}")
-                print("Ingrese los nuevos datos (presione Enter para conservar el valor actual):")
+                break # ID correcto
 
-                pedir_y_asignar(prod_actual, "nombre", "Nuevo nombre", str, opcional=True)
-                pedir_y_asignar(prod_actual, "categoria", "Nueva categoría", str, opcional=True)
-                pedir_y_asignar(prod_actual, "stock_actual", "Nuevo stock actual", int, opcional=True)
-                pedir_y_asignar(prod_actual, "stock_minimo", "Nuevo stock mínimo", int, opcional=True)
-                pedir_y_asignar(prod_actual, "precio_costo", "Nuevo precio costo (AR$)", float, opcional=True, es_moneda=True)
-                pedir_y_asignar(prod_actual, "precio_venta", "Nuevo precio venta (AR$)", float, opcional=True, es_moneda=True)
-                pedir_y_asignar(prod_actual, "proveedor", "Nuevo proveedor", str, opcional=True)
+            # 2. Implementación de la función "pedir_y_asignar" para solicitar los datos del producto (para reutilizar sus setters)
+            print(f"\nProducto seleccionado: {prod_actual}")
+            print("Ingrese los nuevos datos (presione Enter para conservar el valor actual):")
 
+            pedir_y_asignar(prod_actual, "nombre", "Nuevo nombre", str, opcional=True)
+            pedir_y_asignar(prod_actual, "categoria", "Nueva categoría", str, opcional=True)
+            pedir_y_asignar(prod_actual, "stock_actual", "Nuevo stock actual", int, opcional=True)
+            pedir_y_asignar(prod_actual, "stock_minimo", "Nuevo stock mínimo", int, opcional=True)
+            pedir_y_asignar(prod_actual, "precio_costo", "Nuevo precio costo (AR$)", float, opcional=True, es_moneda=True)
+            pedir_y_asignar(prod_actual, "precio_venta", "Nuevo precio venta (AR$)", float, opcional=True, es_moneda=True)
+            pedir_y_asignar(prod_actual, "proveedor", "Nuevo proveedor", str, opcional=True)
+
+            # 3. Ejecución de la lógica de negocio
+            try:
                 inventario.modificar_producto(prod_actual)
                 print("\n✅ Producto actualizado correctamente.")
-                break
+            except ValueError as e:
+                print(f"❌ {e}")
+            break
 
         # --- OPCIÓN 1.4: Eliminar producto ---
         elif opcion == "1.4":
             print("\n--- 🗑️ ELIMINAR PRODUCTO ---")
+            aux = Producto()
+
+            # 1. Bucle exclusivo para validar e ingresar un ID existente
             while True:
-                aux = Producto()
                 pedir_y_asignar(aux, "id_producto", "Ingrese el ID del producto a eliminar", int)
 
                 prod_actual = inventario.obtener_producto(aux.id_producto)
                 if prod_actual is None:
                     print(f"❌ No existe un producto con el ID {aux.id_producto}.")
                     continue
+                
+                break # ID correcto
 
-                try:
-                    inventario.eliminar_producto(prod_actual)
-                    print(f"✅ Producto '{prod_actual.nombre}' (ID {prod_actual.id_producto}) eliminado exitosamente.")
-                except ValueError as e:
-                    print(f"❌ {e}")
-                break
+            # 2. Ejecución de la lógica de negocio
+            try:
+                inventario.eliminar_producto(prod_actual)
+                print(f"✅ Producto '{prod_actual.nombre}' (ID {prod_actual.id_producto}) eliminado exitosamente.")
+            except ValueError as e:
+                print(f"❌ {e}")
+            break
 
         # --- OPCIÓN 1.5: Buscar productos ---
         elif opcion == "1.5":
@@ -199,9 +224,10 @@ def main():
             print("1. Categoría")
             print("2. Proveedor")
             
-            sub_opcion = input("Opción (1-2): ").strip()
-
+            # 1. Bucle exclusivo para validar e ingresar una opción del sub-menu
             while True:
+                sub_opcion = input("Opción (1-2): ").strip()
+
                 if sub_opcion == "1":
                     criterio = "categoria"
                     break
@@ -209,14 +235,16 @@ def main():
                     criterio = "proveedor"
                     break
                 else:
-                    criterio = None
                     print("❌ Opción no válida. Debe seleccionar 1 o 2.")
 
-            if criterio:
+            # 2. Bucle exclusivo para validar e ingresar un valor para buscar
+            while True:
                 valor = input(f"Ingrese el valor a buscar en {criterio}: ").strip()
+
                 if valor:
                     # Informe consulta al inventario y devuelve la tabla formateada
                     print(informe.generar_reporte_busqueda(criterio, valor))
+                    break
                 else:
                     print("⚠️ Debe ingresar un término para buscar.")
 
@@ -228,14 +256,15 @@ def main():
             # 1. Bucle exclusivo para validar e ingresar un ID existente
             while True:
                 pedir_y_asignar(aux, "id_producto", "ID del producto a reabastecer", int)
+
                 prod_actual = inventario.obtener_producto(aux.id_producto)
 
                 if prod_actual is None:
                     print(f"❌ No existe un producto registrado con el ID {aux.id_producto}.")
                     continue
-                break  # ID correcto, salimos del primer bucle
+                
+                break # ID correcto
 
-            # Mostramos la información del producto seleccionado
             print(f"\nProducto seleccionado: {prod_actual.nombre}")
             print(f"Stock actual: {prod_actual.stock_actual} u. | Stock mínimo: {prod_actual.stock_minimo} u.")
 
@@ -248,7 +277,7 @@ def main():
                     print("❌ La cantidad a incorporar debe ser mayor a 0.")
                     continue
 
-                break  # Cantidad válida, salimos del segundo bucle
+                break # Cantidad válida
 
             # 3. Ejecución de la lógica de negocio
             try:
@@ -257,6 +286,48 @@ def main():
                 print(f"   Nuevo stock de '{prod_actual.nombre}': {prod_actual.stock_actual} unidades.")
             except Exception as e:
                 print(f"❌ Error al reabastecer el producto: {e}")
+
+        # --- OPCIÓN 1.7: Desabastecer producto ---
+        elif opcion == "1.7":
+            print("\n--- 📦 DESABASTECER PRODUCTO (RETIRO / AJUSTE DE STOCK) ---")
+            aux = Producto()
+
+            # 1. Bucle exclusivo para validar e ingresar un ID existente
+            while True:
+                pedir_y_asignar(aux, "id_producto", "ID del producto a desabastecer", int)
+
+                prod_actual = inventario.obtener_producto(aux.id_producto)
+
+                if prod_actual is None:
+                    print(f"❌ No existe un producto registrado con el ID {aux.id_producto}.")
+                    continue
+                break # ID correcto
+
+            print(f"\nProducto seleccionado: {prod_actual.nombre}")
+            print(f"Stock actual: {prod_actual.stock_actual} u. | Stock mínimo: {prod_actual.stock_minimo} u.")
+
+            # 2. Bucle exclusivo para validar e ingresar la cantidad a retirar
+            while True:
+                pedir_y_asignar(aux, "stock_actual", "Cantidad de unidades a retirar", int)
+                cantidad = aux.stock_actual
+
+                if cantidad <= 0:
+                    print("❌ La cantidad a retirar debe ser mayor a 0.")
+                    continue
+
+                if cantidad > prod_actual.stock_actual:
+                    print(f"❌ Stock insuficiente. El stock disponible es de {prod_actual.stock_actual} unidades.")
+                    continue
+
+                break # Cantidad válida
+
+            # 3. Ejecución de la lógica de negocio
+            try:
+                inventario.desabastecer_producto(prod_actual.id_producto, cantidad)
+                print(f"\n✅ ¡Stock actualizado con éxito!")
+                print(f"   Nuevo stock de '{prod_actual.nombre}': {prod_actual.stock_actual} unidades.")
+            except Exception as e:
+                print(f"❌ Error al desabastecer el producto: {e}")
 
         # --- OPCIÓN 2.1: Ver alertas de stock crítico ---
         elif opcion == "2.1":
@@ -284,10 +355,11 @@ def main():
             print("Seleccione el tipo de cotización:")
             print("1. Dólar Oficial")
             print("2. Dólar Blue")
-            
-            sub_opcion = input("Opción (1-2): ").strip()
 
+            # 1. Bucle exclusivo para validar e ingresar una opción del sub-menu
             while True:
+                sub_opcion = input("Opción (1-2): ").strip()
+
                 if sub_opcion == "1":
                     tipo = "oficial"
                     break
@@ -304,6 +376,7 @@ def main():
         # --- OPCIÓN 3.4: Exportar gráficos .png ---
         elif opcion == "3.4":
             print("\n--- 📊 GENERANDO GRÁFICOS ANALÍTICOS (.PNG) ---")
+            
             try:
                 resultados = Graficador.generar_graficos_png(
                     inventario.lista_productos, 
@@ -317,7 +390,9 @@ def main():
         # --- OPCIÓN 4: Simular ventas ---
         elif opcion == "4":
             print("\n--- 🎲 SIMULACIÓN DE VENTA ---")
+
             tx = inventario.simular_ventas()
+
             if tx:
                 print(f"✅ Venta realizada con éxito:")
                 print(f"   • Producto: {tx.nombre_producto}")

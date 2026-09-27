@@ -86,6 +86,7 @@ python main.py
    * **1.4 Eliminar producto**: Baja por ID con verificación previa.
    * **1.5 Buscar productos**: Filtrado dinámico por categoría o proveedor.
    * **1.6 Reabastecer producto**: Incorporación de stock a un producto existente.
+   * **1.7 Desabastecer producto**: Retiro de stock a un producto existente.
 2. **Control de Stock y Alertas**:
    * **2.1 Ver alertas de stock crítico**: Identificación de productos cuyo stock actual está por debajo del mínimo.
    * **2.2 Ver costo de reposición**: Cálculo del presupuesto necesario para nivelar el stock al umbral recomendado.
@@ -109,3 +110,5 @@ En cumplimiento con la consigna del Trabajo Práctico 1, se documenta el uso de 
 | 5 | "Cómo estructurar el método de reabastecimiento en dos bucles while para validar el ID existente y la cantidad ingresada sin reiniciar el pedido de ID." | Gemini | Estructura de dos bucles `while` secuenciales usando `pedir_y_asignar(...)`. | Se probó el flujo interactivo asegurando que no se pierda el ID ingresado si la cantidad ingresada es errónea. |
 | 6 | "Cómo refactorizar los métodos de carga y guardado en `Inventario` aplicando el principio DRY mediante un método auxiliar genérico." | Gemini | Implementación de `_cargar_lista` y `_guardar_lista` recibiendo métodos de conversión (`from_dict` / `to_dict`). | Se validó el paso de funciones como parámetros de primera clase y se mantuvieron los bloques `try/except` independientes en `main.py` para aislar fallos de archivos. |
 | 7 | "Explicación y funcionamiento de la función incorporada `getattr()` para el acceso dinámico a atributos de un objeto." | Gemini | Explicación del funcionamiento de `getattr(objeto, atributo, valor_defecto)`. | Se verificó su aplicación en `filtrar_por_criterio()` para evitar código repetitivo de tipo `if/elif` al buscar por categoría o proveedor. |
+| 8 | "Cómo estructurar el método `desabastecer_producto` en `Inventario` para registrar retiros/mermas de stock validando la cantidad disponible." | Gemini | Implementación del método de ajuste con registro automático de transacción tipo `"DESABASTECER"`. | Se validó que la cantidad a retirar no supere el stock actual y se integró en `main.py` mediante bucles interactivos de validación. |
+| 9 | "Cómo formatear cadenas con anchos fijos (`f-strings`) en Python para alinear reportes financieros y tablas tabuladas en la consola." | Gemini | Uso de especificadores `:<` (izquierda) y `:>` (derecha) con inclusión de prefijos `AR$` dentro del ancho de columna. | Se ajustó la estética a 88 caracteres en los reportes de inventario y se corrigieron los desfasajes en las barras separadoras de la tabla de transacciones. |
