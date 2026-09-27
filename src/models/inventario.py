@@ -4,9 +4,12 @@ from src.models.transaccion import Transaccion
 from src.services.archivador import Archivador
 
 class Inventario:
-    def __init__(self, lista_productos: list[Producto], lista_transacciones: list[Transaccion] = None):
+    def __init__(self,
+            lista_productos: list[Producto] = None,
+            lista_transacciones: list[Transaccion] = None
+    ):
         self.lista_productos = lista_productos
-        self.lista_transacciones = lista_transacciones if lista_transacciones is not None else []
+        self.lista_transacciones = lista_transacciones
 
     # ==========================================
     # Getters y setters
@@ -18,7 +21,7 @@ class Inventario:
 
     @lista_productos.setter
     def lista_productos(self, valor: list[Producto]):
-        self._lista_productos = valor
+        self._lista_productos = valor if valor is not None else []
 
     @property
     def lista_transacciones(self) -> list[Transaccion]:
@@ -26,7 +29,7 @@ class Inventario:
 
     @lista_transacciones.setter
     def lista_transacciones(self, valor: list[Transaccion]):
-        self._lista_transacciones = valor
+        self._lista_transacciones = valor if valor is not None else []
 
     # ==========================================
     # Métodos Utilitarios
@@ -115,7 +118,7 @@ class Inventario:
             tipo="ACTUALIZACION",
             producto=producto,
             cantidad=producto.stock_actual,
-            monto_total=producto.stock_actual * producto.precio_venta,
+            monto_total=0.0,
             detalle="Modificación de producto"
         )
 

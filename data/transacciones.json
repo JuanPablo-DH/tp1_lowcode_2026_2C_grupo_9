@@ -56,7 +56,7 @@
         "nombre_producto": "Memoria RAM 32GB (2x16GB) DDR5 6000MHz",
         "cantidad": 10,
         "monto_total": 1250000.0,
-        "detalle": "Ingreso de stock orden de compra #881",
+        "detalle": "Ingreso de stock (+10 u.)",
         "fecha": "2026-09-22 09:00:00"
     },
     {
@@ -86,7 +86,7 @@
         "nombre_producto": "Fuente 850W 80 Plus Gold Modular",
         "cantidad": 2,
         "monto_total": 260000.0,
-        "detalle": "Ingreso parcial orden #890",
+        "detalle": "Ingreso de stock (+2 u.)",
         "fecha": "2026-09-25 10:15:30"
     },
     {

@@ -1,14 +1,14 @@
 class Producto:
     def __init__(
         self,
-        id_producto: int = 1,
+        id_producto: int = 0,
         nombre: str = "Borrador",
-        categoria: str = "General",
+        categoria: str = "Borrador",
         stock_actual: int = 0,
         stock_minimo: int = 0,
         precio_costo: float = 0.0,
         precio_venta: float = 0.0,
-        proveedor: str = "General"
+        proveedor: str = "Borrador"
     ):
         self.id_producto = id_producto
         self.nombre = nombre
@@ -29,6 +29,9 @@ class Producto:
 
     @id_producto.setter
     def id_producto(self, valor: int):
+        if valor < 0:
+            raise ValueError("El ID no puede ser negativo.")
+        
         self._id_producto = valor
 
     @property

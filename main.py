@@ -58,7 +58,7 @@ def pedir_y_asignar(
 def mostrar_menu():
     """Muestra el menú principal con la interfaz categorizada."""
     print("\n" + "=" * 55)
-    print("      SISTEMA DE GESTIÓN DE INVENTARIO (TP1)")
+    print("            SISTEMA DE GESTIÓN DE INVENTARIO")
     print("=" * 55)
     print(" 1. Inventario")
     print("    1.1 Ver catálogo completo")
