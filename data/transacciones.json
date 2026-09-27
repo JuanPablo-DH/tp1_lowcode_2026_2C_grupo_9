@@ -6,7 +6,7 @@
         "nombre_producto": "Procesador AMD Ryzen 7 7800X3D",
         "cantidad": 5,
         "monto_total": 2900000.0,
-        "detalle": "Alta inicial de catálogo",
+        "detalle": "Alta de producto",
         "fecha": "2026-09-18 09:15:00"
     },
     {
@@ -16,7 +16,7 @@
         "nombre_producto": "Placa de Video RTX 4070 Super 12GB",
         "cantidad": 4,
         "monto_total": 3960000.0,
-        "detalle": "Alta inicial de catálogo",
+        "detalle": "Alta de producto",
         "fecha": "2026-09-18 10:00:00"
     },
     {

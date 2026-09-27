@@ -154,7 +154,6 @@ def main():
                 print(f"\n✅ Producto '{nuevo_prod.nombre}' registrado exitosamente.")
             except ValueError as e:
                 print(f"❌ {e}")
-            break
 
         # --- OPCIÓN 1.3: Modificar producto ---
         elif opcion == "1.3":
@@ -191,7 +190,6 @@ def main():
                 print("\n✅ Producto actualizado correctamente.")
             except ValueError as e:
                 print(f"❌ {e}")
-            break
 
         # --- OPCIÓN 1.4: Eliminar producto ---
         elif opcion == "1.4":
@@ -215,7 +213,6 @@ def main():
                 print(f"✅ Producto '{prod_actual.nombre}' (ID {prod_actual.id_producto}) eliminado exitosamente.")
             except ValueError as e:
                 print(f"❌ {e}")
-            break
 
         # --- OPCIÓN 1.5: Buscar productos ---
         elif opcion == "1.5":
