@@ -92,7 +92,7 @@ python main.py
    * **2.2 Ver costo de reposición**: Cálculo del presupuesto necesario para nivelar el stock al umbral recomendado.
 3. **Informes Financieros y Transaccionales**:
    * **3.1 Ver reporte financiero**: Capital invertido, margen de ganancia proyectado y totales del catálogo.
-   * **3.2 Ver reporte transaccional**: Historial auditado de movimientos (`VENTA`, `REPOSICION`, `ACTUALIZACION`).
+   * **3.2 Ver reporte transaccional**: Historial auditado de movimientos (`ACTUALIZACION`, `VENTA`, `REABASTECER` y `DESABASTECER`).
    * **3.3 Ver valuación en dólares (U$D)**: Conversión financiera en tiempo real consumiendo DolarApi.com.
    * **3.4 Exportar gráficos de análisis (.png)**: Generación automática de imágenes estadísticas en la carpeta `data/`.
 4. **Simular ventas**: Proceso interactivo de ventas con descuento de stock.

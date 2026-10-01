@@ -103,7 +103,6 @@ class Inventario:
             tipo="ACTUALIZACION",
             producto=producto,
             cantidad=producto.stock_actual,
-            monto_total=producto.stock_actual * producto.precio_venta,
             detalle="Alta de producto"
         )
 
@@ -118,7 +117,6 @@ class Inventario:
             tipo="ACTUALIZACION",
             producto=producto,
             cantidad=producto.stock_actual,
-            monto_total=0.0,
             detalle="Modificación de producto"
         )
 
@@ -131,7 +129,6 @@ class Inventario:
             tipo="ACTUALIZACION",
             producto=producto,
             cantidad=producto.stock_actual,
-            monto_total=0.0,
             detalle="Baja de producto"
         )
         
